@@ -2,7 +2,7 @@ const http = require('http')
 const path = require('path')
 const fs = require('fs')
 const url = require('url')
-const { buffer } = require('stream/consumers')
+
 
 const dataPath = path.join(__dirname, 'data')
 
@@ -12,6 +12,9 @@ const server = http.createServer((req, res) =>{
     }
     if(req.url == '/jokes' && req.method == 'POST'){
         addJoke(req, res)
+    }
+    if (req.url.startsWith('/like')){
+        like(req, res)
     }
 });
 
@@ -45,5 +48,20 @@ server.listen(3000)
         let filePath = path.join(dataPath, fileName)
         fs.writeFileSync(filePath, JSON.stringify(joke))
     })
+    res.end()
+
+}
+ function like(req, res){
+    const url = require('url')
+    const params = url.parse(req.url, true).query
+    let id = params.id
+    if(id){
+        let FilePath = path.join(dataPath, id+'.json')
+        let file = fs.readFileSync(FilePath)
+        let jokeJSON = Buffer.from(file).toString()
+        let joke = JSON.parse(jokeJSON)
+        joke.likes++;
+        fs.writeFileSync(FilePath, JSON.stringify(joke))
+    }
     res.end()
  }
