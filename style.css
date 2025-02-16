@@ -1,0 +1,38 @@
+body{
+    background: url('https://github.com/blacksempai/robojoke-website-example/blob/main/background.jpg?raw=true');
+}
+header {
+    background: url('https://raw.githubusercontent.com/blacksempai/robojoke-website-example/e7ae56742ea193f552d3e29227e563f87b0d248e/header.svg');
+    background-size: cover;
+    background-position: bottom;
+    height: 200px;
+}
+main {
+    background: url('https://raw.githubusercontent.com/blacksempai/robojoke-website-example/e7ae56742ea193f552d3e29227e563f87b0d248e/main.svg');
+    background-size: cover;
+    background-position: top;
+    height: 60vh;
+}.logoImg{
+    max-height: 90px;
+    margin-top: -50px;
+}
+.title{
+    margin-top: -10px;
+    color: aliceblue;
+    font-family: fantasy;
+    letter-spacing: 1opx;
+    font-size: 80px;
+}
+.rate{
+    display: flex;
+}
+.like{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dislike{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
